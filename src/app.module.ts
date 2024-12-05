@@ -4,13 +4,13 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 
 @Module({
-  imports: [
-    GraphQLModule.forRoot<ApolloDriverConfig>({
-      driver: ApolloDriver,
-      playground: false,
-      typePaths: ['./**/*.graphql'],
-      plugins: [ApolloServerPluginLandingPageLocalDefault()],
-    }),
-  ],
+	imports: [
+		GraphQLModule.forRoot<ApolloDriverConfig>({
+			driver: ApolloDriver,
+			playground: false,
+			typePaths: ['./**/*.graphql'],
+			plugins: [ApolloServerPluginLandingPageLocalDefault()],
+		}),
+	],
 })
 export class AppModule {}
