@@ -27,5 +27,5 @@ type Query {
   songsByYear(year: Int!, order: SortOrder!): [Song]
   mostPopularByMonth(month: String!, order: SortOrder!): [PopularItem]
   mostPopularOverall: [PopularItem]
-  searchSongs(query: String!, order: SortOrder!): [Song]
+  searchSongs(name: String!, order: SortOrder!): [Song]
 }
