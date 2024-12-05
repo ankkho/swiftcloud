@@ -1,0 +1,7 @@
+type Song {
+  name: String!
+}
+
+type Query {
+  songs: [Song]
+}
