@@ -1,4 +1,4 @@
-import { OrderBy, type SongDetails } from './types.js';
+import { OrderBy, type SongDetails } from '../types.js';
 
 export const orderByYear = (filteredSongs: SongDetails[], order: OrderBy): SongDetails[] => {
 	if (order === OrderBy.ASC) {
