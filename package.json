@@ -10,6 +10,7 @@
     "format:fix": "prettier --write \"src/**/*.ts\" \"**/*.(t|j)s\"",
     "lint:fix": "npx xo --fix",
     "test": "jest",
+    "test:silent": "jest --silent",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "start": "npm run build && node ./dist/main.js",
