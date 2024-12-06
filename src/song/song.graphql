@@ -3,6 +3,12 @@ enum SortOrder {
   DESC
 }
 
+enum Months {
+  june
+  july
+  august
+}
+
 type Song {
   title: String!
   artist: String!
@@ -19,13 +25,17 @@ type MonthlyPlays {
 }
 
 type PopularItem {
-  name: String!
+  title: String!
+  artist: String!
+  writer: String
+  album: String
+  year: Int!
   plays: Int!
 }
 
 type Query {
   songsByYear(year: Int!, order: SortOrder!): [Song]
-  mostPopularByMonth(month: String!, order: SortOrder!): [PopularItem]
+  mostPopularByMonth(month: Months!, order: SortOrder!): [PopularItem]
   mostPopularOverall: [PopularItem]
   searchSongs(name: String!, order: SortOrder!): [Song]
 }

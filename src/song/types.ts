@@ -3,17 +3,30 @@ export enum OrderBy {
 	DESC = 'DESC',
 }
 
+export enum Months {
+	june = 'june',
+	july = 'july',
+	august = 'august',
+}
+
 type MonthlyPlays = {
 	june: number;
 	july: number;
 	august: number;
 };
 
-export type SongDetails = {
+type Song = {
 	title: string;
 	artist: string;
 	writer: string;
 	album: string | number;
 	year: number;
-	plays: MonthlyPlays;
 };
+
+export type PopularSong = {
+	plays: number;
+} & Song;
+
+export type SongDetails = {
+	plays: MonthlyPlays;
+} & Song;
