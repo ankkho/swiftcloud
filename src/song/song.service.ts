@@ -39,7 +39,7 @@ export class SongService implements OnModuleInit {
 		return filteredSongs;
 	}
 
-	async mostPopularByMonth(month: Months, order: OrderBy): Promise<PopularSong[]> {
+	async mostPopularByMonth(month: Months): Promise<PopularSong[]> {
 		const filteredSongs = this.songData
 			.filter((song) => song.plays[month])
 			.map((details) => {
@@ -50,10 +50,23 @@ export class SongService implements OnModuleInit {
 				};
 			});
 
-		const reducer = (mostPopular, currentSong) => (currentSong?.plays > mostPopular?.plays ? currentSong : mostPopular) as PopularSong;
-		const mostPopularSong = filteredSongs.reduce(reducer, null) as PopularSong;
+		const reducer = (mostPopular: PopularSong, currentSong: PopularSong) => (currentSong?.plays > mostPopular?.plays ? currentSong : mostPopular);
+		const mostPopularSong = filteredSongs.reduce(reducer, filteredSongs[0]) as PopularSong;
 
 		return [mostPopularSong];
+	}
+
+	async mostPopularOverall(): Promise<SongDetails> {
+		const reducer = (mostPopular: SongDetails, currentSong: SongDetails): SongDetails => {
+			const totalPlaysOfCurrentSong = Object.values(currentSong?.plays).reduce((sum: number, monthPlays: number) => sum + monthPlays, 0);
+			const totalPlaysOfMostPopularSong = Object.values(mostPopular?.plays).reduce((sum: number, monthPlays: number) => sum + monthPlays, 0);
+
+			return totalPlaysOfCurrentSong > totalPlaysOfMostPopularSong ? currentSong : mostPopular;
+		};
+
+		const mostPopularSongOverall = this.songData.reduce(reducer, this.songData[0]);
+
+		return mostPopularSongOverall;
 	}
 
 	formatData(): void {

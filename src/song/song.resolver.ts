@@ -17,7 +17,12 @@ export class SongResolver {
 	}
 
 	@Query('mostPopularByMonth')
-	async mostPopularByMonth(@Args('month') month: Months, @Args('order') order: OrderBy) {
-		return this.songService.mostPopularByMonth(month, order ?? OrderBy.DESC);
+	async mostPopularByMonth(@Args('month') month: Months) {
+		return this.songService.mostPopularByMonth(month);
+	}
+
+	@Query('mostPopularOverall')
+	async mostPopularOverall() {
+		return this.songService.mostPopularOverall();
 	}
 }

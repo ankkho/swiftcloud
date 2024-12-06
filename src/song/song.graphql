@@ -13,7 +13,7 @@ type Song {
   title: String!
   artist: String!
   writer: String
-  album: String
+  album: String!
   year: Int!
   plays: MonthlyPlays
 }
@@ -24,18 +24,30 @@ type MonthlyPlays {
   august: Int
 }
 
-type PopularItem {
+type PopularSongByMonth {
   title: String!
   artist: String!
   writer: String
-  album: String
+  album: String!
   year: Int!
   plays: Int!
 }
 
 type Query {
-  songsByYear(year: Int!, order: SortOrder!): [Song]
-  mostPopularByMonth(month: Months!, order: SortOrder!): [PopularItem]
-  mostPopularOverall: [PopularItem]
-  searchSongs(name: String!, order: SortOrder!): [Song]
+  """
+  Provides list(s) of songs by year
+  """
+  songsByYear(year: Int!, order: SortOrder): [Song]
+  """
+  Provides list(s) of songs by month
+  """
+  mostPopularByMonth(month: Months!): [PopularSongByMonth]
+  """
+  Provides the most popular song, overall
+  """
+  mostPopularOverall: Song
+  """
+  Search a song by title
+  """
+  searchSongs(name: String!, order: SortOrder): [Song]
 }
