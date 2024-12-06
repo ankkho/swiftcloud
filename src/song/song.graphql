@@ -41,7 +41,7 @@ type Query {
   """
   Provides list(s) of songs by month
   """
-  mostPopularByMonth(month: Months!): [PopularSongByMonth]
+  mostPopularByMonth(month: Months!): PopularSongByMonth
   """
   Provides the most popular song, overall
   """
