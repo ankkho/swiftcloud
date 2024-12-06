@@ -6,7 +6,7 @@
   "private": false,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "nest build",
+    "build": "nest build && cp ./src/**/*.graphql ./dist/src/",
     "format:fix": "prettier --write \"src/**/*.ts\" \"**/*.(t|j)s\"",
     "lint:fix": "npx xo --fix",
     "test": "jest",
@@ -14,8 +14,7 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "start": "npm run build && node ./dist/main.js",
-    "start:dev": "nest start --watch",
-    "prepare": "husky"
+    "start:dev": "nest start --watch"
   },
   "dependencies": {
     "@apollo/server": "^4.11.2",
