@@ -4,10 +4,15 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { LoggerModule } from 'nestjs-pino';
 import pino from 'pino';
+import { ConfigModule } from '@nestjs/config';
 import { SongModule } from './song/song.module';
 
 @Module({
 	imports: [
+		ConfigModule.forRoot({
+			ignoreEnvFile: false,
+			isGlobal: true,
+		}),
 		LoggerModule.forRoot({
 			pinoHttp: {
 				stream: pino.destination({
