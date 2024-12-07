@@ -1,4 +1,4 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { Test, type TestingModule } from '@nestjs/testing';
 import { SongResolver } from './song.resolver';
 import { SongService } from './song.service';
 import { Months, OrderBy } from './types.js';
