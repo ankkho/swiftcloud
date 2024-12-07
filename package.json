@@ -1,7 +1,7 @@
 {
   "name": "swiftcloud",
   "version": "0.0.1",
-  "description": "",
+  "description": "Get song details of Taylor Swift",
   "author": "Ankit K",
   "private": false,
   "license": "UNLICENSED",
@@ -11,9 +11,8 @@
     "lint:fix": "npx xo --fix",
     "test": "jest",
     "test:silent": "jest --silent",
-    "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
-    "start": "npm run build && node ./dist/main.js",
+    "start": "npm run build && node ./dist/src/main.js",
     "start:dev": "nest start --watch"
   },
   "dependencies": {
