@@ -6,23 +6,26 @@
   "private": false,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "nest build && cp ./src/**/*.graphql ./dist/src/",
+    "build": "nest build && copyfiles src/**/*.graphql dist/",
     "format:fix": "prettier --write \"src/**/*.ts\" \"**/*.(t|j)s\"",
     "lint:fix": "npx xo --fix",
     "test": "jest",
     "test:silent": "jest --silent",
     "test:cov": "jest --coverage",
     "start": "npm run build && node ./dist/src/main.js",
+    "start:prod": "node dist/src/main.js",
     "start:dev": "nest start --watch"
   },
   "dependencies": {
     "@apollo/server": "^4.11.2",
     "@nestjs/apollo": "^12.2.2",
+    "@nestjs/cli": "^10.4.8",
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^3.3.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/graphql": "^12.2.2",
     "@nestjs/platform-express": "^10.4.13",
+    "copyfiles": "^2.4.1",
     "graphql": "^16.9.0",
     "nestjs-pino": "^4.1.0",
     "pino": "^9.5.0",
@@ -36,7 +39,8 @@
     "ignores": [
       ".*\\.spec\\.ts$",
       "commitlint.config.js",
-      "src/config/config.schema.ts"
+      "src/config/config.schema.ts",
+      "postbuild.js"
     ],
     "extends": [
       "plugin:import/recommended",
@@ -62,7 +66,7 @@
     "@golevelup/ts-jest": "^0.6.1",
     "@nestjs/cli": "^10.0.0",
     "@nestjs/schematics": "^10.0.0",
-    "@nestjs/testing": "^10.0.0",
+    "@nestjs/testing": "^10.4.13",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.3.1",
     "@typescript-eslint/parser": "^7.18.0",

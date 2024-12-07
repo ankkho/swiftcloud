@@ -1,0 +1,14 @@
+services:
+  - name: swiftcloud
+    type: web
+    runtime: node
+    region: singapore
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+    plan: free
+    autoDeploy: true
+    buildCommand: npm install --omit=dev && npm run build
+    startCommand: npm run start:prod
