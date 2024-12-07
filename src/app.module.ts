@@ -29,7 +29,7 @@ import { SongModule } from './song/song.module';
 			playground: false,
 			typePaths: ['./**/*.graphql'],
 			plugins: [ApolloServerPluginLandingPageLocalDefault()],
-			introspection: false,
+			introspection: true,
 		}),
 	],
 })
