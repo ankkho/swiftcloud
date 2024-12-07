@@ -13,7 +13,7 @@
     "test:silent": "jest --silent",
     "test:cov": "jest --coverage",
     "start": "npm run build && node ./dist/src/main.js",
-    "start:prod": "node ./dist/src/main.js",
+    "start:prod": "node dist/src/main.js",
     "start:dev": "nest start --watch"
   },
   "dependencies": {
